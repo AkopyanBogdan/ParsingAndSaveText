@@ -116,6 +116,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
+    <Content Include="Views\File\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -125,7 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805221248319_Initial.resx">
