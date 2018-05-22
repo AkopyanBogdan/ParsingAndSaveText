@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using ParsingAndSaveTextInDb.Models;
@@ -30,6 +31,15 @@ namespace ParsingAndSaveTextInDb.Controllers
             return result;
         }
 
+        private int CountOfWord(string encoded, string word)
+        {
+            int count = 0;
+            foreach (Match item in Regex.Matches(encoded, word, RegexOptions.IgnoreCase))
+                ++count;
+
+            return count;
+        }
+
         [HttpPost]
         public ActionResult Upload(HttpPostedFileBase upload, string word)
         {
@@ -47,7 +57,14 @@ namespace ParsingAndSaveTextInDb.Controllers
 
                 result = SearchWord(sentences, word, result);
 
-                
+                foreach (var sentence in result)
+                {
+                    if (sentence != null)
+                    {
+                        int countOfWord = CountOfWord(sentence, word);
+
+                    }
+                }
             }
             return RedirectToAction("Index");
         }
