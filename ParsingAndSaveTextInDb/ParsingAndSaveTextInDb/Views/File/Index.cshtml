@@ -5,3 +5,44 @@
 }
 
 <h1>Brainence</h1>
+
+@using (Html.BeginForm("Upload", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <p>
+        <input type="file" name="upload" />
+    </p>
+    <p>
+        <input type="text" name="word" />
+    </p>
+    <p>
+        <input type="submit" value="Upload File" />
+    </p>
+}
+
+@if (!Model.Any())
+{
+    <p>We don't have any sentences</p>
+}
+else
+{
+    <table style="border: solid">
+        <tbody>
+            <tr style="border: solid">
+                <td style="border: solid">Sentence</td>
+                <td style="border: solid">Count</td>
+            </tr>
+        </tbody>
+        @foreach (var sentence in Model)
+        {
+            if (sentence.Sentence != null)
+            {
+                <tr>
+                    <td style="border: solid">
+                        @System.Text.Encoding.UTF8.GetString(sentence.Sentence).
+                    </td>
+                    <td style="border: solid">@sentence.Count</td>
+                </tr>
+            }
+        }
+    </table>
+}
