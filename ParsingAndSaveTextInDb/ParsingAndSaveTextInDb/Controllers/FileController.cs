@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
@@ -63,6 +64,18 @@ namespace ParsingAndSaveTextInDb.Controllers
                     {
                         int countOfWord = CountOfWord(sentence, word);
 
+                        byte[] textFile = new byte[sentence.Length];
+                        textFile = Encoding.ASCII.GetBytes(string.Join(" ", sentence
+                            .Split(' ')
+                            .Select(x => new String(x.Reverse().ToArray()))));
+
+                        FileInformation fileInfo = new FileInformation();
+                        fileInfo.Sentence = textFile;
+                        fileInfo.FileName = fileName;
+                        fileInfo.Count = countOfWord;
+
+                        _context.FileInformation.Add(fileInfo);
+                        _context.SaveChanges();
                     }
                 }
             }
