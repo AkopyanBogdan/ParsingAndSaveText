@@ -104,6 +104,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805221248319_Initial.cs" />
+    <Compile Include="Migrations\201805221248319_Initial.Designer.cs">
+      <DependentUpon>201805221248319_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\FileInformation.cs" />
     <Compile Include="Models\IdentityModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,6 +126,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\File\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805221248319_Initial.resx">
+      <DependentUpon>201805221248319_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
